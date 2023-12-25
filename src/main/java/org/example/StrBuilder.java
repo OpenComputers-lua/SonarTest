@@ -1,5 +1,6 @@
+package org.example;
 
-
+import java.nio.BufferOverflowException;
 
 public class StrBuilder {
 	static char[] ALL = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
@@ -27,7 +28,7 @@ public class StrBuilder {
 	}
 	
 	public char[] getReversed() {
-		char[] result = new char[this.result.length];
+		result = new char[this.result.length];
 		int ptr = 0;
 		for(int i = this.result.length - 1; i >= 0; i--) {
 			if(this.result[i] != 0) {
@@ -39,7 +40,7 @@ public class StrBuilder {
 	}
 	
 	public char[] get() {
-		char[] result = new char[this.result.length];
+		result = new char[this.result.length];
 		for(int i = 0; i < this.result.length; i++) {
 			if(this.result[i] != 0) {
 				result[i] = charSet[this.result[i] - 1];
@@ -49,8 +50,8 @@ public class StrBuilder {
 	}
 	
 	public void set(String data) throws Exception {
-		if(data.length() > this.result.length) {
-			throw new Exception("Given string is bigger than configured buffer size");
+		if(data.length() > result.length) {
+			throw new BufferOverflowException();
 		}
 		
 		for(char el: data.toCharArray()) {
@@ -63,7 +64,7 @@ public class StrBuilder {
 				}
 			}
 			if (flag) {
-				throw new Exception("Given string doesnt match the configured charset");
+				throw new IllegalAccessException();
 			}
 		}
 	}

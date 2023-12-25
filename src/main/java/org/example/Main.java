@@ -7,7 +7,8 @@ public class Main {
         StrBuilder sb = new StrBuilder(StrBuilder.LETTERS, 5);
         for(int i = 0; i < 10000; i++) {
             sb.increment();
-            log.info(String.valueOf(sb.getReversed()));
+            String result = String.valueOf(sb.getReversed());
+            log.info(result);
         }
     }
 }

@@ -49,7 +49,7 @@ public class StrBuilder {
 		return result;
 	}
 	
-	public void set(String data) throws Exception {
+	public void set(String data) throws BufferOverflowException, IllegalArgumentException {
 		if(data.length() > result.length) {
 			throw new BufferOverflowException();
 		}
@@ -64,7 +64,7 @@ public class StrBuilder {
 				}
 			}
 			if (flag) {
-				throw new IllegalAccessException();
+				throw new IllegalArgumentException();
 			}
 		}
 	}
